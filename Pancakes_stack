@@ -1,0 +1,53 @@
+import java.util.Stack;
+
+public class TryStack {
+    public static void main(String[] args) {
+        Stack <String> stack_attempt = new Stack<>();
+       stack_attempt.push("pancake_1");
+       stack_attempt.push("pancake_2");
+        stack_attempt.push("pancake_3");
+        stack_attempt.push("burnt_pancake");
+        stack_attempt.push("pancake_5");
+
+        System.out.println("The third element is: " + Get_element_3(stack_attempt));
+
+        if(!stack_attempt.isEmpty()){
+            System.out.println("Deleted top element is: " + stack_attempt.pop());
+            System.out.println("Top element is: " + stack_attempt.peek());
+        }
+
+        System.out.println("Stack size is: " + stack_attempt.size());
+        remove_Burnt(stack_attempt);
+
+    }
+
+
+
+    public static void remove_Burnt(Stack pancakes) {
+        Stack reverse_copy = new Stack();
+        while (!pancakes.isEmpty()) {
+            String check = (String) (pancakes.pop());
+            if (check.equals("burnt_pancake")) {
+                pancakes.pop();
+            } else {
+                reverse_copy.push(check);
+            }
+        }
+        System.out.print("Burnt pancake is removed :");
+        if (!reverse_copy.isEmpty()) {
+            System.out.print(reverse_copy);
+            }
+    }
+
+    public static String Get_element_3(Stack pancakes){
+        int required_index = 3; // put the desired index of element
+        int element_index = required_index - 1;
+        if(pancakes.isEmpty()){
+            return null;
+        } else{
+            return (String) pancakes.get(element_index);
+        }
+    }
+
+
+}
